@@ -1,0 +1,17 @@
+{
+  "name": "serverpti",
+  "version": "1.0.0",
+  "description": "",
+  "main": "analyseTrame.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^6.0.0",
+    "hex-to-binary": "^1.0.1",
+    "hex-to-dec": "^1.0.1"
+  }
+}
