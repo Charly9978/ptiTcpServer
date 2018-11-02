@@ -5,37 +5,43 @@ const admin = require('./firebasInit');
 
 var db = admin.firestore();
 
-net.createServer(function(socket) 
-{ 
+let devicesId = [];
+
+//requete firestore pour connaitre les devices autorisés
+
+db.collection("Devices").get().then((docs)=>{
+  docs.forEach((doc)=>{
+    devicesId.push(doc.id)
+  });
+  console.log(devicesId)
+  server();
+})
+
+const server = function (){
+  net.createServer(function(socket){ 
+
   console.log('GPS connected');
-  socket.on('data',function(data)
-  {
+  socket.on('data',function(data){
     console.log(data.toString());
     let dataArray = data.toString().substring(0,data.length-1).split(',');
    
     switch (dataArray[0]){
 
-      //requete firestore pour connaitre les devices autorisés
+      
 
 
         case '!1':
-      //on vérifie la présence du bip dans firestore
-      let presenceDevice = false;
-      db.collection('Devices').get()
-      .then((docs)=>{
-        docs.forEach((doc)=>{
-          if(doc.id === data[1]){
-            presenceDevice = true
+      //on vérifie la présence de id du bip
+      let presenceDevice = devicesId.includes(dataArray[1]);
+
+          if (!presenceDevice){
+            socket.end();
+            console.log('id non reconnu');
+          }else{
+          socket.idDevice = dataArray[1];
+          console.log(socket.idDevice);
           }
-          })
-      })
-        if (!presenceDevice){
-          socket.end();
-          console.log('id non reconnu');
-        }else{
-        socket.idDevice = dataArray[1];
-        console.log(socket.idDevice);
-        }
+      
         break;
     
         case '!D':
@@ -60,3 +66,4 @@ net.createServer(function(socket)
 }).listen(6060, function() {
   console.log('server listening');
 });
+}

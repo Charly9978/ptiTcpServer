@@ -123,6 +123,9 @@ console.log('alarme :'+typeAlarme)
        data.GSMLocating = true;
     }
         data.alarme = typeAlarme;
+
+        console.log(data);
+        console.log(deviceId);
    
         db.collection('Devices').doc(deviceId).collection('trame').add(
             data
