@@ -8,16 +8,22 @@ var db = admin.firestore();
 let devicesId = [];
 
 //requete firestore pour connaitre les devices autorisés
-
-db.collection("Devices").get().then((docs)=>{
-  docs.forEach((doc)=>{
-    devicesId.push(doc.id)
+  db.collection('Devices').onSnapshot(querySnapshot => {
+    querySnapshot.docChanges.forEach(change => {
+      if (change.type === 'added') {
+        devicesId.push(change.doc.id);
+      }
+      if (change.type === 'removed') {
+        const id= change.doc.id
+        const index = devicesId.findIndex((element)=>{element === id});
+        if(index){
+          devicesId.splice(index,1)
+        }
+      }
+    });
+    console.log(devicesId)
   });
-  console.log(devicesId)
-  server();
-})
 
-const server = function (){
   net.createServer(function(socket){ 
 
   console.log('GPS connected');
@@ -66,4 +72,4 @@ const server = function (){
 }).listen(6060, function() {
   console.log('server listening');
 });
-}
+
