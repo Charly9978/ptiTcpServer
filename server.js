@@ -3,13 +3,13 @@ const net = require('net');
 const analyseTrame = require('./analyseTrame');
 const admin = require('./firebasInit');
 
-var db = admin.firestore();
+const db = admin.firestore();
 
 let devicesId = [];
 
 //requete firestore pour connaitre les devices autorisés
   db.collection('Devices').onSnapshot(querySnapshot => {
-    querySnapshot.docChanges.forEach(change => {
+    querySnapshot.docChanges().forEach(change => {
       if (change.type === 'added') {
         devicesId.push(change.doc.id);
       }
@@ -28,6 +28,7 @@ let devicesId = [];
 
   console.log('GPS connected');
   socket.on('data',function(data){
+    const dateBegin = new Date();
     console.log(data.toString());
     let dataArray = data.toString().substring(0,data.length-1).split(',');
    
@@ -52,7 +53,7 @@ let devicesId = [];
     
         case '!D':
         console.log(dataArray)
-        analyseTrame(socket.idDevice,dataArray);
+        analyseTrame(socket.idDevice,dataArray,dateBegin);
         break;
     
         case '!5':

@@ -3,7 +3,7 @@ var hexToBinary = require('hex-to-binary');
 var admin = require('./firebasInit')
 
 // fonction qui analyse et la trame GPS et l'enregistre dans la base de données
-let analyseTrame = function (deviceId,dataArray,){
+let analyseTrame = function (deviceId,dataArray,dateBegin){
 
 const db = admin.firestore();
 
@@ -126,11 +126,17 @@ console.log('alarme :'+typeAlarme)
 
         console.log(data);
         console.log(deviceId);
+        const dateEndAnalyse = new Date();
+        const timeAnalyse = dateEndAnalyse - dateBegin;
+        console.log("temps d'analyse: ",timeAnalyse)
    
         db.collection('Devices').doc(deviceId).collection('trame').add(
             data
         ).then(()=>{
-            console.log('enregsitrement de la trame réussi')
+            const dateEndRecord = new Date();
+            const timeRecord = dateEndRecord - dateBegin;
+            console.log("temps avec enregistrement: ",timeRecord);
+            console.log('enregsitrement de la trame réussi');
         }).catch((err)=>{
             console.log('enregistrement echoué : '+err)
         })
