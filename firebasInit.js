@@ -1,6 +1,6 @@
 const admin = require("firebase-admin");
 
-const serviceAccount = require("./ev07pti-firebase-adminsdk-ttrsu-22f6c81c01.json");
+const serviceAccount = require("./bip-pti-013e330dd07d.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
