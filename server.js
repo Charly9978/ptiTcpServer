@@ -7,9 +7,11 @@ const db = admin.firestore();
 
 let devicesId = [];
 
+
 //requete firestore pour connaitre les devices autorisés
+
   db.collection('Devices').onSnapshot(querySnapshot => {
-    querySnapshot.docChanges().forEach(change => {
+    querySnapshot.docChanges.forEach(change => {
       if (change.type === 'added') {
         devicesId.push(change.doc.id);
       }
@@ -20,7 +22,8 @@ let devicesId = [];
           devicesId.splice(index,1)
         }
       }
-    });
+    })
+
     console.log(devicesId)
   });
 
@@ -70,7 +73,7 @@ let devicesId = [];
     console.log('GPS disconnected');
   });
  
-}).listen(6060, function() {
+}).listen(2010, function() {
   console.log('server listening');
 });
 
