@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1574375793730" clover="3.2.0">
+  <project timestamp="1574375793730" name="All files">
+    <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2" elements="10" coveredelements="10" complexity="0" loc="8" ncloc="8" packages="1" files="1" classes="1"/>
+    <file name="hexToBinary.ts" path="/home/benj/Documents/programmation/ptiTcpServer/src/hexToBinary.ts">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="26" count="1" type="stmt"/>
+      <line num="27" count="2" type="stmt"/>
+      <line num="28" count="2" type="stmt"/>
+      <line num="29" count="11" type="stmt"/>
+      <line num="30" count="11" type="stmt"/>
+      <line num="32" count="2" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
