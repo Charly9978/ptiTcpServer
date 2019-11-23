@@ -21,7 +21,7 @@ export interface IData {
 
 
 
-class analyseTrame {
+class AnalyseTrame {
 
     private _data: IData
     private trame: string[]
@@ -141,4 +141,4 @@ class analyseTrame {
 
 }
 
-export default analyseTrame
+export default AnalyseTrame

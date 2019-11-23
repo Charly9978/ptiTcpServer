@@ -36,13 +36,12 @@ class DataBase {
             })
         
             console.log(this._acceptedDevicesId)
-          });
+          },err=>console.log(err));
 
     }
 
-    checkIdDevice(deviceId:string){
-        const isAuthDevice = this._acceptedDevicesId.includes(deviceId)
-        return isAuthDevice? true: new Error('id non reconnu')
+    checkIdDevice(deviceId:string):boolean{
+        return this._acceptedDevicesId.includes(deviceId)
     }
 
     async sendData(data:IData,deviceId:string){
