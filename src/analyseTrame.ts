@@ -2,7 +2,7 @@ import * as admin from 'firebase-admin'
 import hexToBinary from './utils/hexToBinary'
 import orientation from './utils/orientation'
 
-interface IData {
+export interface IData {
     date: Date
     position: admin.firestore.GeoPoint
     speed: number

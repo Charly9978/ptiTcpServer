@@ -1,4 +1,4 @@
-import hexToBinary from '../src/hexToBinary'
+import hexToBinary from '../src/utils/hexToBinary'
 
 test('test first value',()=>{
     expect(hexToBinary('15AACF7')).toBe('1010110101010110011110111')
