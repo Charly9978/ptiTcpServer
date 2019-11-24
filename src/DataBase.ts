@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin'
-import {IData} from './analyseTrame'
+import {IData} from './ExtratcData'
 let serviceAccount = require('../bip-pti-013e330dd07d.json');
 
 class DataBase {
