@@ -1,23 +1,8 @@
 import * as admin from 'firebase-admin'
 import hexToBinary from './utils/hexToBinary'
 import orientation from './utils/orientation'
+import {IData} from './utils/interface'
 
-export interface IData {
-    date: Date
-    position: admin.firestore.GeoPoint
-    speed: number
-    dir: string
-    alt: number
-    availableSatellite: number
-    fixedSatellite: number
-    alarme: string[]
-    turnOn: boolean
-    inCharge: boolean
-    GPSChipFailed: boolean
-    GPSfixed: boolean
-    levelBattery: number
-    GSMLocating: boolean
-}
 
 
 

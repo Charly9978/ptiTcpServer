@@ -1,7 +1,6 @@
-import * as net from 'net'
 import {ISocket} from './utils/interface'
 import {db} from '.'
-import ExtractData from './ExtratcData'
+import ExtractData from './ExtractData'
 
 class AnalyseTrame {
 
