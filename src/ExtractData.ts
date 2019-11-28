@@ -8,7 +8,7 @@ import {IData} from './utils/interface'
 
 class ExtractData {
 
-    private _data: IData
+    private _data: IData = <IData>{}
     private trame: string[]
     private binaryCode : string[]
 
@@ -42,16 +42,19 @@ class ExtractData {
     }
 
     private getDate(){
-
         //on récupère les chiffres représentant la date
+        console.log(this.trame[1])
         const dateArray = this.trame[1]
         .split('/')
         .map(date=>Number(date))
+        console.log (dateArray)
 
         //on récupère les chiffres représentant l'heure
         const timeArray = this.trame[2]
         .split(':')
         .map(string=>Number(string))
+
+        console.log(dateArray[2]+2000,dateArray[1]-1,dateArray[0],timeArray[0],timeArray[1],timeArray[2])
 
         this._data.date = new Date(dateArray[2]+2000,dateArray[1]-1,dateArray[0],timeArray[0],timeArray[1],timeArray[2])
     }

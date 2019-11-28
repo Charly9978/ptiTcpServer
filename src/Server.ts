@@ -4,8 +4,8 @@ import {ISocket} from './utils/interface'
 
 class Server{
 
-    private port: number
-    server : net.Server
+    protected port: number
+    protected server : net.Server
 
     constructor(port:number){
         this.port = port
@@ -23,6 +23,12 @@ class Server{
     start(){
         this.server.listen(this.port,()=>{
             console.log(`server listening on port ${this.port}`)
+        })
+    }
+
+    close(){
+        this.server.close(()=>{
+            console.log('serveur arreté')
         })
     }
 }
