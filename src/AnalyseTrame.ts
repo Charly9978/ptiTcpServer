@@ -21,9 +21,12 @@ class AnalyseTrame {
      private transformTrameToArray(){
         this._arrayTrame = this.trame.toString().substring(0, this.trame.length - 1).split(',')
     }
+
+
     private getDeviceId(){
         this._deviceId = this.socket.idDevice || this._arrayTrame[1]
     }
+
     
     private analyseTrame(){
         const firstData = this._arrayTrame[0]
@@ -47,6 +50,7 @@ class AnalyseTrame {
         
             default:
                 console.log(this._arrayTrame)
+
                 break;
         }
     }
