@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "firebase-admin": "^6.0.0",
+    "firebase-admin": "^11.4.1",
     "hex-to-binary": "^1.0.1",
     "hex-to-dec": "^1.0.1"
   }
